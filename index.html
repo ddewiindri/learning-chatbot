@@ -56,7 +56,7 @@
     })(window, document, "clarity", "script", "n4qft2kc0b");
 </script>
     <!-- Meta Pixel Code -->
-<!-- <script>
+<script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -67,7 +67,7 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '520631900603826');
 fbq('track', 'PageView');
-</script> -->
+</script>
 <noscript></noscript>
     <!-- End of headEnd -->
 </head>
@@ -131,23 +131,17 @@ fbq('track', 'PageView');
 
 
 <script>
-    let hasTrackedSend = false; // Flag to track if the event has been processed
-
     window.addEventListener('message', function(event) {
         // Make sure the message is from the expected origin
         if (event.origin !== 'https://cdn.botpress.cloud') return;
 
         // Check for the custom event you will send from the iframe
         if (event.data.event === 'sendButtonClick') {
-            if (!hasTrackedSend) { // Check if the event has already been tracked
                 // Track the event with Meta Pixel
                 fbq('track', 'Lead', {
                     content_type: 'chat',
-                    content_id: 'your-content-id', // Customize this as needed
                 });
-                hasTrackedSend = true; // Set the flag to true after tracking
                 console.log('Meta Pixel event fired'); // Confirm event fired
-            }
         }
 
         console.log('Message received:', event.data); // Log the received messages
