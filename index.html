@@ -1,3 +1,5 @@
+
+
 <!doctype html>
 <!-- ✨ Built with Framer • https://www.framer.com/ -->
 <html lang="en">
@@ -55,6 +57,19 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "n4qft2kc0b");
 </script>
+    <!-- Meta Pixel Code -->
+<!-- <script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '520631900603826');
+fbq('track', 'PageView');
+</script> -->
 <noscript></noscript>
     <!-- End of headEnd -->
 </head>
@@ -74,6 +89,11 @@
     
     <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
 <script src="https://mediafiles.botpress.cloud/c3b80991-b84e-4fe6-a163-279fb9c6ca78/webchat/config.js" defer=""></script>
+<script defer>
+    window.botpress.on('messageSent', (message) => {
+      Toastify({ text: `Message Sent: ${message}` }).showToast();
+    });
+</script>
 <script>
     window.botpressWebChat.onEvent(
       function (event) {
@@ -108,6 +128,44 @@
       },
       ['LIFECYCLE.LOADED', 'UI.OPENED', 'message']
     )
+</script>
+
+
+<script>
+    let hasTrackedSend = false; // Flag to track if the event has been processed
+
+    window.addEventListener('message', function(event) {
+        // Make sure the message is from the expected origin
+        if (event.origin !== 'https://cdn.botpress.cloud') return;
+
+        // Check for the custom event you will send from the iframe
+        if (event.data.event === 'sendButtonClick') {
+            if (!hasTrackedSend) { // Check if the event has already been tracked
+                // Track the event with Meta Pixel
+                fbq('track', 'Lead', {
+                    content_type: 'chat',
+                    content_id: 'your-content-id', // Customize this as needed
+                });
+                hasTrackedSend = true; // Set the flag to true after tracking
+                console.log('Meta Pixel event fired'); // Confirm event fired
+            }
+        }
+
+        console.log('Message received:', event.data); // Log the received messages
+    });
+
+    // Reset the flag when the chat is opened, allowing for future tracking
+    window.botpress.on('webchat:opened', function() {
+        hasTrackedSend = false; // Reset the flag when the chat opens
+    });
+</script>
+
+
+<script>
+  document.getElementById('btn-send').addEventListener('click', function() {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({'event': 'sendButtonClick'});
+  });
 </script>
     
 
