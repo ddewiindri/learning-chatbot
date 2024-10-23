@@ -127,24 +127,17 @@ fbq('track', 'PageView');
 
 
 <script>
+const iframe = document.getElementById('bp-web-widget');
 
-        if (event.origin !== 'https://cdn.botpress.cloud') return;
-
-        // Check for the custom event you will send from the iframe
-        if (event.data.event === 'sendButtonClick') {
-                // Track the event with Meta Pixel
-                fbq('track', 'Lead', {
-                    content_type: 'chat',
-                });
-                console.log('Meta Pixel event fired'); // Confirm event fired
+// Listen for messages from the iframe
+window.addEventListener('message', (event) => {
+    if (event.origin === 'https://cdn.botpress.cloud') { // Check the origin
+        if (event.data === 'message') {
+            console.log('Button inside iframe was clicked!');
         }
+    }
+});
 
-        console.log('Message received:', event.data); // Log the received messages
-
-    document.getElementById('btn-send').addEventListener('click', function() {
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({'event': 'sendButtonClick'});
-  });
 </script>
     
 
