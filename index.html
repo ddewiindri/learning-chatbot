@@ -148,6 +148,11 @@ fbq('track', 'PageView');
 
         console.log('Message received:', event.data); // Log the received messages
     });
+
+    document.getElementById('btn-send').addEventListener('click', function() {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({'event': 'sendButtonClick'});
+  });
 </script>
     
 
