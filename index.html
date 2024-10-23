@@ -89,11 +89,6 @@ fbq('track', 'PageView');
     
     <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
 <script src="https://mediafiles.botpress.cloud/c3b80991-b84e-4fe6-a163-279fb9c6ca78/webchat/config.js" defer=""></script>
-<script defer>
-    window.botpress.on('messageSent', (message) => {
-      Toastify({ text: `Message Sent: ${message}` }).showToast();
-    });
-</script>
 <script>
     window.botpressWebChat.onEvent(
       function (event) {
@@ -132,29 +127,19 @@ fbq('track', 'PageView');
 
 
 <script>
-window.addEventListener('message', function(event) {
-        // Make sure the message is from the expected origin
-        if (event.origin !== 'https://cdn.botpress.cloud') return;
+// Listen for the messageSent event from the Botpress iframe
+window.botpress.on('messageSent', (message) => {
+    // Log the message to the console
+    console.log(`Message Sent: ${message}`);
+    if (event.origin !== 'https://cdn.botpress.cloud') return;
 
         // Check for the custom event you will send from the iframe
-        if (event.data.event === 'sendButtonClick') {
                 // Track the event with Meta Pixel
                 fbq('track', 'Lead', {
                     content_type: 'chat',
-                    content_id: 'your-content-id', // Customize this as needed
                 });
                 console.log('Meta Pixel event fired'); // Confirm event fired
-        }
-
-        console.log('Message received:', event.data); // Log the received messages
-    });
-</script>
-
-<script>
-  document.getElementById('btn-send').addEventListener('click', function() {
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({'event': 'sendButtonClick'});
-  });
+});
 </script>
 
     <!-- End of bodyEnd -->
