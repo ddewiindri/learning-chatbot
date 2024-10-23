@@ -125,17 +125,10 @@ fbq('track', 'PageView');
     )
 </script>
 
-
-<script>
-// Listen for the messageSent event from the Botpress iframe
-    if (event.origin !== 'https://cdn.botpress.cloud') return;
-
-        // Check for the custom event you will send from the iframe
-                // Track the event with Meta Pixel
-                fbq('track', 'Lead', {
-                    content_type: 'chat',
-                });
-                console.log('Meta Pixel event fired'); // Confirm event fired
+<script defer>
+    window.botpress.on('messageSent', (message) => {
+      Toastify({ text: `Message Sent: ${message}` }).showToast();
+    });
 </script>
 
     <!-- End of bodyEnd -->
