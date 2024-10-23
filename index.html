@@ -1,4 +1,5 @@
 
+
 <!doctype html>
 <!-- ✨ Built with Framer • https://www.framer.com/ -->
 <html lang="en">
@@ -26,6 +27,13 @@
     <meta name="twitter:title" content="Chat with Mercedes">
     <meta name="twitter:description" content="Mercedes Intelligent Assistant">
     <meta name="twitter:image" content="https://framerusercontent.com/images/agqFsWuvb34pSxDPMegdLbZOa9M.jpg">
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5MK9TM22');</script>
+    <!-- End Google Tag Manager -->
     
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-27BLFKF8KB"></script>
@@ -35,6 +43,8 @@
       gtag('js', new Date());
       gtag('config', 'G-27BLFKF8KB');
     </script>
+
+    
     
     <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
     
@@ -48,7 +58,7 @@
     })(window, document, "clarity", "script", "n4qft2kc0b");
 </script>
     <!-- Meta Pixel Code -->
-<script>
+<!-- <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -59,7 +69,7 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '520631900603826');
 fbq('track', 'PageView');
-</script>
+</script> -->
 <noscript></noscript>
     <!-- End of headEnd -->
 </head>
@@ -79,6 +89,11 @@ fbq('track', 'PageView');
     
     <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
 <script src="https://mediafiles.botpress.cloud/c3b80991-b84e-4fe6-a163-279fb9c6ca78/webchat/config.js" defer=""></script>
+<script defer>
+    window.botpress.on('messageSent', (message) => {
+      Toastify({ text: `Message Sent: ${message}` }).showToast();
+    });
+</script>
 <script>
     window.botpressWebChat.onEvent(
       function (event) {
@@ -115,7 +130,9 @@ fbq('track', 'PageView');
     )
 </script>
 
+
 <script>
+
     window.addEventListener('message', function(event) {
         // Make sure the message is from the expected origin
         if (event.origin !== 'https://cdn.botpress.cloud') return;
@@ -125,9 +142,7 @@ fbq('track', 'PageView');
                 // Track the event with Meta Pixel
                 fbq('track', 'Lead', {
                     content_type: 'chat',
-                    content_id: 'your-content-id', // Customize this as needed
                 });
-                hasTrackedSend = true; // Set the flag to true after tracking
                 console.log('Meta Pixel event fired'); // Confirm event fired
         }
 
@@ -135,7 +150,7 @@ fbq('track', 'PageView');
     });
 </script>
     
-    
+
     <!-- End of bodyEnd -->
 </body>
 </html>
