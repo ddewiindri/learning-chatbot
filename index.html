@@ -136,7 +136,7 @@ fbq('track', 'PageView');
         if (event.origin !== 'https://cdn.botpress.cloud') return;
 
         // Check for the custom event you will send from the iframe
-        if (event.data.event === 'messageSent') {
+        if (event.data.event === 'MESSAGE.SENT') {
                 // Track the event with Meta Pixel
                 fbq('track', 'Lead', {
                     content_type: 'chat',
