@@ -128,9 +128,6 @@ fbq('track', 'PageView');
 
 <script>
 // Listen for the messageSent event from the Botpress iframe
-window.botpress.on('messageSent', (message) => {
-    // Log the message to the console
-    console.log(`Message Sent: ${message}`);
     if (event.origin !== 'https://cdn.botpress.cloud') return;
 
         // Check for the custom event you will send from the iframe
@@ -139,7 +136,6 @@ window.botpress.on('messageSent', (message) => {
                     content_type: 'chat',
                 });
                 console.log('Meta Pixel event fired'); // Confirm event fired
-});
 </script>
 
     <!-- End of bodyEnd -->
