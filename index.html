@@ -136,7 +136,7 @@ fbq('track', 'PageView');
         if (event.origin !== 'https://cdn.botpress.cloud') return;
 
         // Check for the custom event you will send from the iframe
-        if (event.data.event === 'sendButtonClick') {
+        if (event.data.event === 'messageSent') {
                 // Track the event with Meta Pixel
                 fbq('track', 'Lead', {
                     content_type: 'chat',
@@ -146,21 +146,7 @@ fbq('track', 'PageView');
 
         console.log('Message received:', event.data); // Log the received messages
     });
-
-    // Reset the flag when the chat is opened, allowing for future tracking
-    window.botpress.on('webchat:opened', function() {
-        hasTrackedSend = false; // Reset the flag when the chat opens
-    });
-</script>
-
-
-<script>
-  document.getElementById('btn-send').addEventListener('click', function() {
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({'event': 'sendButtonClick'});
-  });
-</script>
-    
+</script>    
 
     <!-- End of bodyEnd -->
 </body>
