@@ -92,7 +92,14 @@ fbq('track', 'PageView');
 window.addEventListener('message', function(event) {
     // Ensure you validate the origin of the message
     if (event.origin === 'https://cdn.botpress.cloud') {
-        console.log('Data from iframe:', event.data.data);
+        console.log('iframe exist');
+         if (event.data.event === 'sendButtonClick') {
+                // Track the event with Meta Pixel
+                fbq('track', 'Lead', {
+                    content_type: 'chat',
+                });
+                console.log('Meta Pixel event fired'); // Confirm event fired
+        }
     }
 });
 </script>
