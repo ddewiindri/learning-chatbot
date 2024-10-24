@@ -76,11 +76,13 @@
 <script src="https://mediafiles.botpress.cloud/c3b80991-b84e-4fe6-a163-279fb9c6ca78/webchat/config.js" defer=""></script>
 
 <script>
+let isMessageProcessed = false;
 window.addEventListener('message', function(event) {
     // Ensure you validate the origin of the message
     if (event.origin === 'https://cdn.botpress.cloud') {
         console.log('iframe exist');
-         if (event.data.type === 'MESSAGE.SENT') {
+         if (event.data.type === 'MESSAGE.SENT' && !isMessageProcesse) {
+                 isMessageProcessed = true;
                 // Track the event with Meta Pixel
                 fbq('track', 'Lead', {
                     content_type: 'Mercedes_Chatbot_Lead',
