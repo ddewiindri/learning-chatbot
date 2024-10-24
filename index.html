@@ -96,6 +96,16 @@ window.addEventListener('message', function(event) {
         }
     }
 });
+
+// Function to open the chatbot
+function openChatbot() {
+    const iframe = document.getElementById('bp-web-widget');
+    iframe.style.display = 'block'; // Show the iframe
+    iframe.contentWindow.focus(); // Optionally focus on the iframe
+}
+
+// Automatically open the chatbot on page load
+window.onload = openChatbot;
 </script>
 
     <!-- End of bodyEnd -->
