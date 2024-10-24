@@ -87,56 +87,26 @@ fbq('track', 'PageView');
     
     <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
 <script src="https://mediafiles.botpress.cloud/c3b80991-b84e-4fe6-a163-279fb9c6ca78/webchat/config.js" defer=""></script>
-<script defer>
-    window.botpress.on('messageSent', (message) => {
-      Toastify({ text: `Message Sent: ${message}` }).showToast();
-    });
-</script>
-<!--
-<script>
-    window.botpressWebChat.onEvent(
-      function (event) {
-        if (event.type === 'LIFECYCLE.LOADED') {
-          window.botpressWebChat.sendEvent({ type: 'show' })
-        }
-
-        if (event.type === 'UI.OPENED') {
-            // Hide the spinner
-            const spinner = document.getElementById('botpress-spinner');
-            if (spinner) {
-                spinner.style.display = 'none';
-            }
-            
-            // Update the text
-            const statusTextDiv = document.getElementById('botpress-status-text');
-            if (statusTextDiv) {
-                const paragraph = statusTextDiv.querySelector('p');
-                if (paragraph) {
-                    paragraph.textContent = "Chat with Mercedes";
-                }
-            }
-        }
-
-        // Listen for the custom Meta Pixel event
-        if (event.type === 'message' && event.payload && event.payload.metaPixelEvent) {
-            const metaPixelEvent = event.payload.metaPixelEvent;
-            fbq('track', metaPixelEvent.eventName, {
-                content_type: metaPixelEvent.contentType
-            });
-        }
-      },
-      ['LIFECYCLE.LOADED', 'UI.OPENED', 'message']
-    )
-</script>-->
 
 <script>
-const iframe = document.querySelector('iframe');
-if (iframe) {
-    console.log('Iframe exists');
-} else {
-    console.log('Iframe does not exist');
+const specificUrl = 'https://cdn.botpress.cloud'; // The URL you want to check
+const iframes = document.getElementsById('bp-web-widget');
+
+let exists = false;
+
+for (let iframe of iframes) {
+    if (iframe.src === specificUrl) {
+        exists = true;
+        break;
+    }
 }
-</script> 
+
+if (exists) {
+    console.log('Iframe with the specific URL exists');
+} else {
+    console.log('Iframe with the specific URL does not exist');
+}
+</script>
 
     <!-- End of bodyEnd -->
 </body>
