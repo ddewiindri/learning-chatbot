@@ -92,16 +92,7 @@ fbq('track', 'PageView');
 const specificUrl = 'https://cdn.botpress.cloud'; // The URL you want to check
 const iframes = document.getElementById('bp-web-widget');
 
-let exists = false;
-
-for (let iframe of iframes) {
-    if (iframe.src === specificUrl) {
-        exists = true;
-        break;
-    }
-}
-
-if (exists) {
+if (iframes) {
     console.log('Iframe with the specific URL exists');
 } else {
     console.log('Iframe with the specific URL does not exist');
