@@ -129,24 +129,14 @@ fbq('track', 'PageView');
     )
 </script>-->
 
-
 <script>
-    window.addEventListener('message', function(event) {
-        // Make sure the message is from the expected origin
-        if (event.origin !== 'https://cdn.botpress.cloud') return;
-
-        // Check for the custom event you will send from the iframe
-        if (event.data.event === 'MESSAGE.SENT') {
-                // Track the event with Meta Pixel
-                fbq('track', 'Lead', {
-                    content_type: 'chat',
-                });
-                console.log('Meta Pixel event fired'); // Confirm event fired
-        }
-
-        console.log('Message received:', event.data); // Log the received messages
-    });
-</script>    
+const iframe = document.querySelector('iframe');
+if (iframe) {
+    console.log('Iframe exists');
+} else {
+    console.log('Iframe does not exist');
+}
+</script> 
 
     <!-- End of bodyEnd -->
 </body>
