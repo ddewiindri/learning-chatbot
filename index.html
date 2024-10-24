@@ -81,7 +81,7 @@ window.addEventListener('message', function(event) {
     // Ensure you validate the origin of the message
     if (event.origin === 'https://cdn.botpress.cloud') {
         console.log('iframe exist');
-         if (event.data.type === 'MESSAGE.SENT' && !isMessageProcesse) {
+         if (event.data.type === 'MESSAGE.SENT' && !isMessageProcessed) {
                  isMessageProcessed = true;
                 // Track the event with Meta Pixel
                 fbq('track', 'Lead', {
