@@ -89,13 +89,12 @@ fbq('track', 'PageView');
 <script src="https://mediafiles.botpress.cloud/c3b80991-b84e-4fe6-a163-279fb9c6ca78/webchat/config.js" defer=""></script>
 
 <script>
-const specificUrl = 'https://cdn.botpress.cloud'; // The URL you want to check
-
-if (specificUrl) {
-    console.log('Iframe with the specific URL exists');
-} else {
-    console.log('Iframe with the specific URL does not exist');
-}
+window.addEventListener('message', function(event) {
+    // Ensure you validate the origin of the message
+    if (event.origin === 'https://cdn.botpress.cloud') {
+        console.log('Data from iframe:', event.data.data);
+    }
+});
 </script>
 
     <!-- End of bodyEnd -->
