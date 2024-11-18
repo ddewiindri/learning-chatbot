@@ -108,15 +108,27 @@ window.addEventListener('message', function(event) {
     }
 });
 
-// Function to open the chatbot
-function openChatbot() {
-    const iframe = document.getElementById('bp-web-widget');
-    iframe.style.display = 'block'; // Show the iframe
-    iframe.contentWindow.focus(); // Optionally focus on the iframe
-}
-
-// Automatically open the chatbot on page load
-window.onload = openChatbot;
+window.botpressWebChat.onEvent(
+      function (event) {
+        if (event.type === 'UI.OPENED') {
+            // Hide the spinner
+            const spinner = document.getElementById('botpress-spinner');
+            if (spinner) {
+                spinner.style.display = 'none';
+            }
+            
+            // Update the text
+            const statusTextDiv = document.getElementById('botpress-status-text');
+            if (statusTextDiv) {
+                const paragraph = statusTextDiv.querySelector('p');
+                if (paragraph) {
+                    paragraph.textContent = "Chat with Mercedes";
+                }
+            }
+        };
+      },
+      ['UI.OPENED']
+    )
 </script>
 
     <!-- End of bodyEnd -->
