@@ -62,6 +62,17 @@ fbq('track', 'PageView');
 </script>
 <noscript></noscript>
     <!-- End of headEnd -->
+
+<!-- Start of Xaxis Pixel -->
+<script language="javascript" type="text/javascript">
+    function sc(v){if (v===null){return};
+    var dateAf=new Date();
+    dateAf.setTime(dateAf.getTime()+(365*24*60*60*1000));
+    document.cookie="affclick="+v+";"+"expires="+dateAf.toUTCString()+";path=/";
+    localStorage.setItem('affclick',v)}sc((new URLSearchParams(window.location.search)).get("clickid"))
+</script>
+<!-- End of Xaxis Pixel -->
+    
 </head>
 <body class="framer-body-vOED_y1aA-framer-FhVYw">
     <script async src="https://events.framer.com/script" data-fid="e438abbadef5b222b98bb005de9527ec36beab80199f39967500d9ff22314c1d"></script>
