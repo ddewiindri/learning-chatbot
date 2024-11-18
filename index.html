@@ -93,7 +93,7 @@ fbq('track', 'PageView');
 
 <script>
 let isMessageProcessed = false; // Flag to track if the message has been processed
-window.botpressWebChat.onEvent(('message', function(event) {
+window.botpressWebChat.onEvent('message', function(event) {
     // Ensure you validate the origin of the message
     if (event.origin === 'https://cdn.botpress.cloud') {
         console.log('iframe exist');
