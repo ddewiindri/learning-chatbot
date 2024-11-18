@@ -102,6 +102,8 @@ window.addEventListener('message', function(event) {
                 // Track the event with Meta Pixel
                 fbq('track', 'Lead', {
                     content_type: 'Mercedes_Chatbot_Lead',
+                    const leadEventId = window.fbq._.eventId;
+                    console.log("Lead Event ID:", leadEventId);
                 });
                 console.log('Meta Pixel event fired'); // Confirm event fired
         }
