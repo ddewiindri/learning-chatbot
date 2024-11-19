@@ -87,12 +87,6 @@ function sc(v){if (v===null){return};var dateAf=new Date();dateAf.setTime(dateAf
     
     <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
 <script src="https://mediafiles.botpress.cloud/c3b80991-b84e-4fe6-a163-279fb9c6ca78/webchat/config.js" defer=""></script>
-
-<script defer>
-    window.botpress.on('messageSent', (message) => {
-      Toastify({ text: `Message Sent: ${message}` }).showToast();
-    });
-</script>
     
 <script>
 let isMessageProcessed = false; // Flag to track if the message has been processed
@@ -100,6 +94,7 @@ window.addEventListener('message', function(event) {
     // Ensure you validate the origin of the message
     if (event.origin === 'https://cdn.botpress.cloud') {
         console.log('iframe exist');
+        console.log('message event', event.data);
          if (event.data.type === 'MESSAGE.SENT' && !isMessageProcessed) {
                  isMessageProcessed = true; // Set the flag to true to prevent future processing
                 // Track the event with Meta Pixel
