@@ -95,6 +95,7 @@ window.addEventListener('message', function(event) {
     if (event.origin === 'https://cdn.botpress.cloud') {
         console.log('iframe exist');
         console.log('message event', event.data);
+        const messageId = event.payload?.id; // Get the ID of the message
          if (event.data.type === 'MESSAGE.SENT' && !isMessageProcessed) {
                  isMessageProcessed = true; // Set the flag to true to prevent future processing
                 // Track the event with Meta Pixel
@@ -102,8 +103,7 @@ window.addEventListener('message', function(event) {
                     content_type: 'Mercedes_Chatbot_Lead',
                 });
                 console.log('Meta Pixel event fired'); // Confirm event fired
-                 const messageId = event.data.payload?.id;
-             console.log('Message sent by bot, ID:', messageId);
+             console.log('Message sent with ID:', messageId);
         }
     }
 });
