@@ -102,6 +102,8 @@ window.addEventListener('message', function(event) {
                     content_type: 'Mercedes_Chatbot_Lead',
                 });
                 console.log('Meta Pixel event fired'); // Confirm event fired
+                 const messageId = event.data.payload?.id;
+             console.log('Message sent by bot, ID:', messageId);
         }
     }
 });
