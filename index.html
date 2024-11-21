@@ -98,24 +98,17 @@ window.addEventListener('message', function(event) {
         // Extract specific values from event data
          if (event.data.type === 'MESSAGE.SENT' && !isMessageProcessed) {
                  isMessageProcessed = true; // Set the flag to true to prevent future processing
-                 // Access the `value` object from the event
-      const value = event.value;
-
-      // Extract specific properties from `value`
-      const messageId = value?.id; // Assuming the ID is inside `value`
-                // Track the event with Meta Pixel
+                 const messageId = event.value?.id;
+                // Track the event with Meta Pixelif (messageId) {
+        console.log('Message ID:', messageId);
+      } else {
+        console.log('Message ID is undefined. Check the event value structure.');
+      }
                 fbq('track', 'Lead', {
                     content_type: 'Mercedes_Chatbot_Lead',
                 });
                 console.log('Meta Pixel event fired'); // Confirm event fired
-             if (messageId) {
-        console.log('Message ID:', messageId);
-      } else {
-        console.log('Message ID is undefined. Check the value structure.');
-      }
-
-      // Optionally, log the `value` to debug its structure
-      console.log('Value:', JSON.stringify(value, null, 2));
+             
         }
     }
 });
