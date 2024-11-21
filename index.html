@@ -98,18 +98,17 @@ window.addEventListener('message', function(event) {
         // Extract specific values from event data
          if (event.data.type === 'MESSAGE.SENT' && !isMessageProcessed) {
                  isMessageProcessed = true; // Set the flag to true to prevent future processing
-                 const messageId = event.value?.id;
+                 const messageId = event.value?.message?.id;
                 // Track the event with Meta Pixel
+                fbq('track', 'Lead', {
+                    content_type: 'Mercedes_Chatbot_Lead',
+                });
+                console.log('Meta Pixel event fired'); // Confirm event fired
              if (messageId) {
         console.log('Message ID:', messageId);
       } else {
         console.log('Message ID is undefined. Check the event value structure.');
       }
-                fbq('track', 'Lead', {
-                    content_type: 'Mercedes_Chatbot_Lead',
-                });
-                console.log('Meta Pixel event fired'); // Confirm event fired
-             
         }
     }
 });
