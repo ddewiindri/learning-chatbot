@@ -96,17 +96,16 @@ window.addEventListener('message', function(event) {
         console.log('iframe exist');
         console.log('message event', event.data);
         // Extract specific values from event data
-        const messageId = event.data.payload?.id; // Get the ID of the message
         const customParam = event.data.payload?.custom_param; // Replace `custom_param` with your parameter name
          if (event.data.type === 'MESSAGE.SENT' && !isMessageProcessed) {
                  isMessageProcessed = true; // Set the flag to true to prevent future processing
+                 const messageId = event.payload?.id;
                 // Track the event with Meta Pixel
                 fbq('track', 'Lead', {
                     content_type: 'Mercedes_Chatbot_Lead',
                 });
                 console.log('Meta Pixel event fired'); // Confirm event fired
-              console.log('Message sent with ID:', messageId);
-            console.log('Custom parameter value:', customParam);
+             console.log('Message ID:', messageId);
         }
     }
 });
