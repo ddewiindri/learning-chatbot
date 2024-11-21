@@ -103,16 +103,21 @@ window.addEventListener('message', function(event) {
                     content_type: 'Mercedes_Chatbot_Lead',
                 });
                 console.log('Meta Pixel event fired'); // Confirm event fired
+             
                  const messageId = event.data.value?.id;
-             if (messageId) {
-                console.log("Message ID:", messageId);
-              } else {
-                console.log("Message ID is undefined.");
-              }
+                 if (messageId) {
+                    console.log("Message ID:", messageId);
+                  } else {
+                    console.log("Message ID is undefined.");
+                  }
+                 var afoffer_id = 23027;
+                var afid = messageId;
+                var afstatus =1;
         }
     }
 });
 </script>
+    <script language="javascript" type="text/javascript" src="https://app.adstracking.io/track.js"></script>
 <script>
     window.botpressWebChat.onEvent(
       function (event) {
