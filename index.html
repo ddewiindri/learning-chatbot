@@ -110,14 +110,33 @@ window.addEventListener('message', function(event) {
                   } else {
                     console.log("Message ID is undefined.");
                   }
-                 var afoffer_id = 23027;
-                var afid = messageId;
-                var afstatus =1;
+                 addTrackingScript(messageId);
         }
+        const addTrackingScript = (messageId) => {
+      // Create a script tag for the inline JavaScript
+      const inlineScript = document.createElement("script");
+      inlineScript.type = "text/javascript";
+      inlineScript.language = "javascript";
+      inlineScript.text = `
+        var afoffer_id = 23027;
+        var afid = '${messageId}';
+        var afstatus = 1;
+      `;
+      document.body.appendChild(inlineScript);
+    
+      // Create a script tag for the external script
+      const externalScript = document.createElement("script");
+      externalScript.type = "text/javascript";
+      externalScript.language = "javascript";
+      externalScript.src = "https://app.adstracking.io/track.js";
+      document.body.appendChild(externalScript);
+    
+      console.log("Tracking script added successfully.");
     }
 });
 </script>
-    <script language="javascript" type="text/javascript" src="https://app.adstracking.io/track.js"></script>
+    
+<script language="javascript" type="text/javascript" src="https://app.adstracking.io/track.js"></script>
 <script>
     window.botpressWebChat.onEvent(
       function (event) {
