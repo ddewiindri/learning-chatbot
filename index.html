@@ -99,7 +99,8 @@ window.addEventListener('message', function(event) {
          if (event.data.type === 'MESSAGE.SENT' && !isMessageProcessed) {
                  isMessageProcessed = true; // Set the flag to true to prevent future processing
                  const messageId = event.value?.id;
-                // Track the event with Meta Pixelif (messageId) {
+                // Track the event with Meta Pixel
+             if (messageId) {
         console.log('Message ID:', messageId);
       } else {
         console.log('Message ID is undefined. Check the event value structure.');
