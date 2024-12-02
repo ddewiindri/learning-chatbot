@@ -109,7 +109,7 @@ window.addEventListener('message', function(event) {
                  const messageId = event.data.value?.id;
                 // Add tracking code for Adstracking
                 var afoffer_id = 23027;
-                var afid = messageId; // Use messageId from the event data
+                var afid = '${messageId}'; // Use messageId from the event data
                 var afstatus = 1;
     
                 // Dynamically insert the tracking script
@@ -122,8 +122,7 @@ window.addEventListener('message', function(event) {
         }
     }
 });
-</script>    
-<script language="javascript" type="text/javascript" src="https://app.adstracking.io/track.js"></script>
+</script>
 <script>
     window.botpressWebChat.onEvent(
       function (event) {
