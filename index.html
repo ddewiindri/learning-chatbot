@@ -120,6 +120,13 @@ window.addEventListener('message', function(event) {
                     var afstatus = 1;
                 `;
                 document.body.appendChild(inlineScript);
+
+                const externalScript = document.createElement("script");
+                externalScript.type = "text/javascript";
+                externalScript.language = "javascript";
+                externalScript.src = "https://app.adstracking.io/track.js";
+                document.body.appendChild(externalScript);
+                     
                 console.log("Tracking script added successfully.");
             } else {
                 console.log("Message ID is undefined.");
@@ -128,7 +135,6 @@ window.addEventListener('message', function(event) {
     }
 });
 </script>
-<script language="javascript" type="text/javascript" src="https://app.adstracking.io/track.js"></script>
 <script>
     window.botpressWebChat.onEvent(
       function (event) {
