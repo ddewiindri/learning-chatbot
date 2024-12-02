@@ -107,8 +107,6 @@ window.addEventListener('message', function(event) {
                 console.log('Meta Pixel event fired'); // Confirm event fired
              
                 const messageId = event.data.value?.id;
-                 if (messageId) {
-                console.log("Message ID:", messageId);
 
                 // Add tracking script dynamically
                 const inlineScript = document.createElement("script");
@@ -126,11 +124,6 @@ window.addEventListener('message', function(event) {
                 externalScript.language = "javascript";
                 externalScript.src = "https://app.adstracking.io/track.js";
                 document.body.appendChild(externalScript);
-                     
-                console.log("Tracking script added successfully.");
-            } else {
-                console.log("Message ID is undefined.");
-            }
         }
     }
 });
