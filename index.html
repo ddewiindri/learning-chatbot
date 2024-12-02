@@ -110,22 +110,14 @@ window.addEventListener('message', function(event) {
                  if (messageId) {
                 console.log("Message ID:", messageId);
 
-                // Add tracking script dynamically
-                const inlineScript = document.createElement("script");
-                inlineScript.type = "text/javascript";
-                inlineScript.language = "javascript";
-                inlineScript.text = `
-                    var afoffer_id = 23027;
-                    var afid = '${messageId}';
-                    var afstatus = 1;
-                `;
-                document.body.appendChild(inlineScript);
-
-                const externalScript = document.createElement("script");
-                externalScript.type = "text/javascript";
-                externalScript.language = "javascript";
-                externalScript.src = "https://app.adstracking.io/track.js";
-                document.body.appendChild(externalScript);
+                var afoffer_id = 23027;
+                var afid = '${messageId}'; // Ensure Lead_ID is a valid JavaScript variable or string.
+                var afstatus = 1;
+                
+                var script = document.createElement('script');
+                script.type = 'text/javascript';
+                script.src = "https://app.adstracking.io/track.js";
+                document.head.appendChild(script); // Appends the script dynamically.
 
                 console.log("Tracking script added successfully.");
             } else {
