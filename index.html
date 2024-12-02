@@ -106,19 +106,31 @@ window.addEventListener('message', function(event) {
                 });
                 console.log('Meta Pixel event fired'); // Confirm event fired
              
-                 //const messageId = event.data.value?.id;
-                // Add tracking code for Adstracking
-                var afoffer_id = 23027;
-                var afid = event.data.value?.id; // Use messageId from the event data
-                var afstatus = 1;
-    
-                // Dynamically insert the tracking script
-                var trackingScript = document.createElement('script');
-                trackingScript.type = 'text/javascript';
-                trackingScript.src = "https://app.adstracking.io/track.js";
-                document.head.appendChild(trackingScript);
-    
-                console.log('Adstracking script added with messageId:', afid); // Confirm tracking script is added
+                const messageId = event.data.value?.id;
+                 if (messageId) {
+                console.log("Message ID:", messageId);
+
+                // Add tracking script dynamically
+                const inlineScript = document.createElement("script");
+                inlineScript.type = "text/javascript";
+                inlineScript.language = "javascript";
+                inlineScript.text = `
+                    var afoffer_id = 23027;
+                    var afid = '${messageId}';
+                    var afstatus = 1;
+                `;
+                document.body.appendChild(inlineScript);
+
+                const externalScript = document.createElement("script");
+                externalScript.type = "text/javascript";
+                externalScript.language = "javascript";
+                externalScript.src = "https://app.adstracking.io/track.js";
+                document.body.appendChild(externalScript);
+
+                console.log("Tracking script added successfully.");
+            } else {
+                console.log("Message ID is undefined.");
+            }
         }
     }
 });
