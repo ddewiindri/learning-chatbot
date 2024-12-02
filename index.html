@@ -107,22 +107,18 @@ window.addEventListener('message', function(event) {
                 console.log('Meta Pixel event fired'); // Confirm event fired
              
                  const messageId = event.data.value?.id;
-                 if (messageId) {
-                console.log("Message ID:", messageId);
-
+                // Add tracking code for Adstracking
                 var afoffer_id = 23027;
-                var afid = ${messageId}; // Ensure Lead_ID is a valid JavaScript variable or string.
+                var afid = messageId; // Use messageId from the event data
                 var afstatus = 1;
-                
-                var script = document.createElement('script');
-                script.type = 'text/javascript';
-                script.src = "https://app.adstracking.io/track.js";
-                document.head.appendChild(script); // Appends the script dynamically.
-
-                console.log("Tracking script added successfully.");
-            } else {
-                console.log("Message ID is undefined.");
-            }
+    
+                // Dynamically insert the tracking script
+                var trackingScript = document.createElement('script');
+                trackingScript.type = 'text/javascript';
+                trackingScript.src = "https://app.adstracking.io/track.js";
+                document.head.appendChild(trackingScript);
+    
+                console.log('Adstracking script added with messageId:', afid); // Confirm tracking script is added
         }
     }
 });
