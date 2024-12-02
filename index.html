@@ -107,6 +107,7 @@ window.addEventListener('message', function(event) {
                 console.log('Meta Pixel event fired'); // Confirm event fired
              
                 const messageId = event.data.value?.id;
+                console.log("Message ID:", messageId);
 
                 // Add tracking script dynamically
                 const inlineScript = document.createElement("script");
