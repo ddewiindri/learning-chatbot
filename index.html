@@ -105,26 +105,26 @@ window.addEventListener('message', function(event) {
                     content_type: 'Mercedes_Chatbot_Lead',
                 });
                 console.log('Meta Pixel event fired'); // Confirm event fired
-             
-                const messageId = event.data.value?.id;
-                console.log("Message ID:", messageId);
 
-                // Add tracking script dynamically
+                const messageId = event.data.value?.id;
+                console.log("Message ID:", messageId)
+
+                //Add tracking script dynamically
                 const inlineScript = document.createElement("script");
                 inlineScript.type = "text/javascript";
                 inlineScript.language = "javascript";
                 inlineScript.text = `
-                    var afoffer_id = 23027;
-                    var afid = '${messageId}';
-                    var afstatus = 1;
+                var afoffer_id = 23027;
+                var afid = '${messageId}';
+                var afstatus = 1;
                 `;
-                document.body.appendChild(inlineScript);
+                document.body.appenChild(inlineScript);
 
                 const externalScript = document.createElement("script");
                 externalScript.type = "text/javascript";
                 externalScript.language = "javascript";
                 externalScript.src = "https://app.adstracking.io/track.js";
-                document.body.appendChild(externalScript);
+                document.body.appenChild(externalScript);
         }
     }
 });
