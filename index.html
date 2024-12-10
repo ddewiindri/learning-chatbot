@@ -115,7 +115,7 @@ window.addEventListener('message', function(event) {
                 inlineScript.language = "javascript"
                 inlineScript.text = `
                 var afoffer_id = 23027;
-                var afid = '${messageId};
+                var afid = '${messageId}';
                 var afstatus = 1;
                 `;
                 document.body.appenChild(inlineScript);
@@ -124,7 +124,7 @@ window.addEventListener('message', function(event) {
                 externalScript.type = "text/javascript";
                 externalScript.language = "javascript";
                 externalScript.src = "https://app.adstracking.io/track.js";
-                document.body.appenChild(externalScript)
+                document.body.appenChild(externalScript);
         }
     }
 });
