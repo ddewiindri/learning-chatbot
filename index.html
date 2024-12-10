@@ -109,22 +109,22 @@ window.addEventListener('message', function(event) {
                 const messageId = event.data.value?.id;
                 console.log("Message ID:", messageId);
 
-                //Add tracking script dynamically
+                // Add tracking script dynamically
                 const inlineScript = document.createElement("script");
                 inlineScript.type = "text/javascript";
                 inlineScript.language = "javascript";
                 inlineScript.text = `
-                var afoffer_id = 23027;
-                var afid = '${messageId}';
-                var afstatus = 1;
+                    var afoffer_id = 23027;
+                    var afid = '${messageId}';
+                    var afstatus = 1;
                 `;
-                document.body.appenChild(inlineScript);
+                document.body.appendChild(inlineScript);
 
                 const externalScript = document.createElement("script");
                 externalScript.type = "text/javascript";
                 externalScript.language = "javascript";
                 externalScript.src = "https://app.adstracking.io/track.js";
-                document.body.appenChild(externalScript);
+                document.body.appendChild(externalScript);
         }
     }
 });
